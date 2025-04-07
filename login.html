@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="login-page">
+      <h2>Login</h2>
+      <form onsubmit="handleLogin(event)">
+        <input
+          type="text"
+          id="login-email"
+          placeholder="Enter your Email-address"
+          required
+        />
+        <input
+          type="password"
+          id="login-password"
+          placeholder="Enter the Password"
+          required
+        />
+        <button type="submit" id="login-btn" class="button">Login</button>
+      </form>
+
+      <br />
+      <p>Don't have a account?<a href="signup.html">Sign Up</a></p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

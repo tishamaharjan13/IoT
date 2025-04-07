@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users</title>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="users-page">
+      <h2>Welcome, User!</h2>
+
+      <div class="btn-container">
+        <button class="button" id="add-btn">Add Users</button>
+        <button class="button" id="remove-btn">Remove Users</button>
+      </div>
+
+      <div id="add-user" style="display: none; margin-top: 20px">
+        <label for="your-name">Enter your name</label>
+        <input type="text" id="your-name" placeholder="Enter name" />
+        <button class="button" id="submit-user">Submit</button>
+      </div>
+      <br /><br />
+
+      <div id="user-list" style="display: none; margin-top: 20px">
+        <h3>Saved Users</h3>
+        <ul id="user-container"></ul>
+      </div>
+    
+      <h2>Livestream</h2>
+      <button class="button">Start Recording</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
