@@ -8,8 +8,14 @@
   </head>
   <body>
     <div class="users-page">
-      <h2>Welcome, User!</h2>
-
+      <h2 id="title">Welcome, User!</h2>
+      <div
+        class="back-btn-container"
+        id="back-btn-container"
+        style="display: none"
+      >
+        <button id="back-btn" class="button back-button">← Back</button>
+      </div>
       <div class="btn-container">
         <button class="button" id="add-btn">Add Users</button>
         <button class="button" id="remove-btn">Remove Users</button>
@@ -22,11 +28,17 @@
       </div>
       <br /><br />
 
-      <div id="user-list" style="display: none; margin-top: 20px">
+      <div
+        id="user-list"
+        style="display: none; margin-top: 10px; position: relative"
+      >
+        <div style="position: absolute; right: 10px"></div>
         <h3>Saved Users</h3>
+        <br />
         <ul id="user-container"></ul>
       </div>
-    
+      <br />
+
       <h2>Livestream</h2>
       <button class="button">Start Recording</button>
     </div>

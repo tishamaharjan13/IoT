@@ -29,7 +29,6 @@ function handleLogin(event) {
   }
 }
 
-// ✅ FIXED: Add Users button
 document.getElementById("add-btn").addEventListener("click", function () {
   document.getElementById("add-user").style.display = "block";
   document.getElementById("add-btn").style.display = "none";
@@ -60,15 +59,14 @@ const userContainer = document.getElementById("user-container");
 const submitUser = document.getElementById("submit-user");
 const usernameInput = document.getElementById("your-name");
 
-// Show the input form when "Add Users" is clicked
 addBtn.onclick = () => {
   addSection.style.display = "block";
   addBtn.style.display = "none";
   removeBtn.style.display = "none";
   userList.style.display = "none";
+  document.getElementById("back-btn-container").style.display = "block";
 };
 
-// Handle submit (add user)
 submitUser.onclick = () => {
   const name = usernameInput.value.trim();
   if (!name) return alert("Please enter a name.");
@@ -78,16 +76,17 @@ submitUser.onclick = () => {
   resetView();
 };
 
-// Show user list and remove options
 removeBtn.onclick = () => {
   addBtn.style.display = "none";
   removeBtn.style.display = "none";
   addSection.style.display = "none";
   userList.style.display = "block";
   showUsers();
+  document.getElementById("back-btn-container").style.display = "block";
+
+  document.getElementById("title").textContent = "Removing User...";
 };
 
-// Render users in the list
 function showUsers() {
   userContainer.innerHTML = users.length
     ? users
@@ -96,23 +95,33 @@ function showUsers() {
         <li>
           ${user}
           <button class="button" style="width:auto" onclick="removeUser(${i})">Remove</button>
-        </li>
+        </li> 
       `
         )
         .join("")
     : "<li>No users added yet.</li>";
 }
 
-// Remove user by index
 function removeUser(index) {
   users.splice(index, 1);
   showUsers();
 }
 
-// Reset UI back to initial view
 function resetView() {
   addSection.style.display = "none";
   userList.style.display = "none";
   addBtn.style.display = "block";
   removeBtn.style.display = "block";
+  document.getElementById("back-btn-container").style.display = "none";
 }
+
+const backBtn = document.getElementById("back-btn");
+
+backBtn.onclick = () => {
+  userList.style.display = "none";
+  addSection.style.display = "none";
+  addBtn.style.display = "block";
+  removeBtn.style.display = "block";
+  document.getElementById("back-btn-container").style.display = "none";
+  document.getElementById("title").textContent = "Welcome, User!";
+};
