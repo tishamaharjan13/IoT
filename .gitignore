@@ -5,3 +5,4 @@ instance/*
 __pycache__
 labels.txt
 trainer.yml
+.env
