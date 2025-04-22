@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="main.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+  </head>
+  <body>
+    <div class="signup-page">
+      <h2>Sign Up</h2>
+      <!-- <form
+        onsubmit="handleSignup(event)"
+        class="authentication-form"
+        method="POST"
+        action="/register"
+      >   -->
+      <form class="authentication-form" method="POST" action="/signup">
+        <input
+          type="text"
+          placeholder="Enter your full-name"
+          name="fullName"
+          required
+        />
+        <input
+          type="email"
+          id="signup-email"
+          placeholder="Enter your Email-address"
+          name="email"
+          required
+        />
+        <input
+          type="password"
+          id="signup-password"
+          placeholder="Enter the Password"
+          name="password"
+          required
+        />
+        <button type="submit" id="signup-btn" class="button">Register</button>
+      </form>
+
+      <!-- <script src="script.js"></script> -->
+      <script src="{{ url_for('static', filename='script.js') }}"></script>
+      <br />
+      <p>Already have an account? <a href="/login">Sign In</a></p>
+    </div>
+  </body>
+</html>

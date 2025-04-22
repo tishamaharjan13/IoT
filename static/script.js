@@ -67,14 +67,14 @@ addBtn.onclick = () => {
   document.getElementById("back-btn-container").style.display = "block";
 };
 
-submitUser.onclick = () => {
-  const name = usernameInput.value.trim();
-  if (!name) return alert("Please enter a name.");
-  users.push(name);
-  alert("User added: " + name);
-  usernameInput.value = "";
-  resetView();
-};
+// submitUser.onclick = () => {
+//   const name = usernameInput.value.trim();
+//   if (!name) return alert("Please enter a name.");
+//   users.push(name);
+//   alert("User added: " + name);
+//   usernameInput.value = "";
+//   resetView();
+// };
 
 removeBtn.onclick = () => {
   addBtn.style.display = "none";
@@ -90,15 +90,15 @@ removeBtn.onclick = () => {
 function showUsers() {
   userContainer.innerHTML = users.length
     ? users
-        .map(
-          (user, i) => `
+      .map(
+        (user, i) => `
         <li>
           ${user}
           <button class="button" style="width:auto" onclick="removeUser(${i})">Remove</button>
         </li> 
       `
-        )
-        .join("")
+      )
+      .join("")
     : "<li>No users added yet.</li>";
 }
 

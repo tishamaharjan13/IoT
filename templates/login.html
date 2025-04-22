@@ -4,31 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="main.css" />
+    <!-- <link rel="stylesheet" href="main.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
   </head>
   <body>
     <div class="login-page">
       <h2>Login</h2>
-      <form onsubmit="handleLogin(event)">
+      <form action="/login" method="post" class="authentication-form">
         <input
-          type="text"
+          type="email"
           id="login-email"
           placeholder="Enter your Email-address"
+          name="email"
           required
         />
         <input
           type="password"
           id="login-password"
           placeholder="Enter the Password"
+          name="password"
           required
         />
         <button type="submit" id="login-btn" class="button">Login</button>
       </form>
 
       <br />
-      <p>Don't have a account?<a href="signup.html">Sign Up</a></p>
+      <p>Don't have a account?<a href="/signup">Sign Up</a></p>
     </div>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>

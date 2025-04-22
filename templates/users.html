@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Users</title>
-    <link rel="stylesheet" href="main.css" />
+    <title>{{fullName}}</title>
+    <!-- <link rel="stylesheet" href="main.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
   </head>
   <body>
     <div class="users-page">
-      <h2 id="title">Welcome, User!</h2>
+      <h2 id="title">Welcome, {{fullName}}!</h2>
       <div
         class="back-btn-container"
         id="back-btn-container"
@@ -21,11 +25,21 @@
         <button class="button" id="remove-btn">Remove Users</button>
       </div>
 
-      <div id="add-user" style="display: none; margin-top: 20px">
+      <form
+        action="/add-user"
+        method="post"
+        id="add-user"
+        style="display: none; margin-top: 20px"
+      >
         <label for="your-name">Enter your name</label>
-        <input type="text" id="your-name" placeholder="Enter name" />
-        <button class="button" id="submit-user">Submit</button>
-      </div>
+        <input
+          type="text"
+          id="your-name"
+          name="name"
+          placeholder="Enter name"
+        />
+        <button class="button" type="submit" id="submit-user">Submit</button>
+      </form>
       <br /><br />
 
       <div
@@ -43,6 +57,7 @@
       <button class="button">Start Recording</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
   </body>
 </html>
