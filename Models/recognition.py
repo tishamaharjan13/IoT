@@ -1,6 +1,10 @@
 import cv2
 import time
 import pyttsx3
+import hmac
+import hashlib
+import base64
+import requests
 
 # Initialize the speech engine
 engine = pyttsx3.init()
@@ -87,6 +91,9 @@ def recognize():
         return True
     else:
         message = "Access denied. Face not recognized."
+        data = {'key': 'value'}
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post('https://smsapi.bizmessages.com/v1/sms/send', json=data, headers=headers)
         print(message)
         speak(message)
         return False
