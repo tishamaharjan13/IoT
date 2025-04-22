@@ -1,0 +1,7 @@
+.venv
+*.sql
+dataset
+instance/*
+__pycache__
+labels.txt
+trainer.yml
