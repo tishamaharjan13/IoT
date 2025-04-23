@@ -50,6 +50,7 @@ def capture_face(name):
 
     cam.release()
     cv2.destroyAllWindows()
+    return user_folder
 
 # # ✅ Run it
 # if __name__ == "__main__":

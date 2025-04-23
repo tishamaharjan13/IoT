@@ -1,6 +1,6 @@
 #!/bin/bash
 
-scp trainer.yml labels.txt Models/recognition.py sw@192.168.100.12:/Desktop/
+echo "Running Script"
+scp trainer.yml labels.txt zoro@10.20.184.23:/home/zoro/face_recon_model/3d/
 
-sshpass -p "sw" ssh sw@192.168.100.12
-
+# sshpass -p "@123" ssh zoro@10.20.184.23
