@@ -12,14 +12,22 @@
   </head>
   <body>
     <div class="users-page">
-      <h2 id="title">Welcome, {{fullName}}!</h2>
       <div
         class="back-btn-container"
         id="back-btn-container"
         style="display: none"
       >
-        <button id="back-btn" class="button back-button">← Back</button>
+        <button
+          id="back-btn"
+          class="button back-button"
+          style="margin-bottom: 2rem"
+        >
+          ← Back
+        </button>
       </div>
+      <h2 id="title" style="letter-spacing: -0.05rem; margin-bottom: -0.2rem">
+        Welcome, {{fullName}}!
+      </h2>
       <div class="btn-container">
         <button class="button" id="add-btn">Add Users</button>
         <button class="button" id="remove-btn">Remove Users</button>
@@ -40,7 +48,6 @@
         />
         <button class="button" type="submit" id="submit-user">Submit</button>
       </form>
-      <br /><br />
 
       <div
         id="user-list"
@@ -49,12 +56,66 @@
         <div style="position: absolute; right: 10px"></div>
         <h3>Saved Users</h3>
         <br />
-        <ul id="user-container"></ul>
+        <ul id="user-container">
+          {% for user in users %}
+          <li
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            {{user.name}}
+            <form action="/remove-user" method="post">
+              <input type="hidden" name="name" value="{{user.name}}" />
+              <button
+                style="
+                  width: auto;
+                  border-radius: 6px;
+                  padding: 10px 12px;
+                  background: transparent;
+                  border: 1px solid #e65c00;
+                  cursor: pointer;
+                  color: #e65c00;
+                "
+              >
+                Remove
+              </button>
+            </form>
+          </li>
+          {% endfor %}
+        </ul>
       </div>
-      <br />
 
-      <h2>Livestream</h2>
-      <button class="button">Start Recording</button>
+      <div style="margin-top: 1.5rem; margin-bottom: 1.5rem">
+        {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+        <ul style="list-style: none">
+          {% for message in messages %}
+          <li style="color: green">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+      </div>
+      <div style="margin-top: 1.5rem; margin-bottom: 1.5rem">
+        {% with messages = get_flashed_messages(category_filter=["error"]) %} {%
+        if messages %}
+        <ul style="list-style: none">
+          {% for message in messages %}
+          <li style="color: red">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %} {% endwith %}
+      </div>
+
+      <div>
+        <h2 style="letter-spacing: -0.05rem; margin-bottom: 1rem">
+          Livestream
+        </h2>
+        <a href="/live-stream" class="button" style="width: 100%"
+          >Start Recording</a
+        >
+      </div>
     </div>
 
     <!-- <script src="script.js"></script> -->

@@ -81,7 +81,7 @@ removeBtn.onclick = () => {
   removeBtn.style.display = "none";
   addSection.style.display = "none";
   userList.style.display = "block";
-  showUsers();
+  // showUsers();
   document.getElementById("back-btn-container").style.display = "block";
 
   document.getElementById("title").textContent = "Removing User...";
@@ -104,7 +104,7 @@ function showUsers() {
 
 function removeUser(index) {
   users.splice(index, 1);
-  showUsers();
+  // showUsers();
 }
 
 function resetView() {
@@ -123,5 +123,6 @@ backBtn.onclick = () => {
   addBtn.style.display = "block";
   removeBtn.style.display = "block";
   document.getElementById("back-btn-container").style.display = "none";
-  document.getElementById("title").textContent = "Welcome, User!";
+  window.location.reload();
+  // document.getElementById("title").textContent = ;
 };
