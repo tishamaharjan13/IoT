@@ -1,3 +1,4 @@
+
 import os
 import shutil
 from flask import Flask, flash,render_template, request, redirect, url_for, make_response, jsonify
@@ -23,8 +24,8 @@ import subprocess
 from functools import wraps
 from jwt.exceptions import ExpiredSignatureError, InvalidTokenError
 
-from Models.capture import capture_face
-from Models.training import train_model
+from services.capture import capture_face
+from services.training import train_model
 
 app = Flask(__name__, template_folder="templates")
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
@@ -69,7 +70,7 @@ def token_required(f):
             
         try:
             data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
-            current_user = Users.query.filter_by(id=data['public_id']).first()
+            current_user = Users.query.filter_by(id=data['id']).first()
             if not current_user:
                 return redirect(url_for('login_route'))
         except ExpiredSignatureError:
@@ -107,7 +108,7 @@ def post_login_route():
     if not user or not check_password_hash(user.password, password):
         return jsonify({'message': 'Invalid email or password'}), 401
 
-    token = jwt.encode({'public_id': user.id, 'exp': datetime.now(timezone.utc) + timedelta(hours=1)},app.config['SECRET_KEY'], algorithm="HS256")
+    token = jwt.encode({'id': user.id, 'exp': datetime.now(timezone.utc) + timedelta(hours=1)},app.config['SECRET_KEY'], algorithm="HS256")
 
     response = make_response(redirect(url_for('dashboard')))
     response.set_cookie('jwt_token', token)
