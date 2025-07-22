@@ -4,8 +4,6 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt update && apt upgrade
-
 COPY requirements.txt .
 RUN  pip install -r requirements.txt
 
