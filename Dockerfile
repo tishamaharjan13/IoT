@@ -4,7 +4,7 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt update && apk install \
+RUN apt update && apt install \
     build-base \
     postgresql-dev \
     libffi-dev \
