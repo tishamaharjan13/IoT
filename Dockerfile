@@ -4,14 +4,7 @@ WORKDIR /app
 
 ENV PYTHONUNBUFFERED 1
 
-RUN apt update && apt install \
-    build-base \
-    postgresql-dev \
-    libffi-dev \
-    openssl-dev \
-    jpeg-dev \
-    zlib-dev \
-    musl-dev
+RUN apt update && apt upgrade
 
 COPY requirements.txt .
 RUN  pip install -r requirements.txt
