@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: face-detection
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - ./logs:/app/logs
+    environment:
+      - FLASK_ENV=production
+      - PYTHONUNBUFFERED=1
